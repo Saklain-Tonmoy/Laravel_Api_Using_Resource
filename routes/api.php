@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// List all articles
+Route::get('articles', [ArticleController::class, 'index']);
+
+// List single article
+Route::get('article/{id}', [ArticleController::class, 'show']);
+
+// Create new article
+Route::post('article', [ArticleController::class, 'store']);
+
+// Update article
+Route::put('article/{id}', [ArticleController::class, 'store']);
+
+// Delete article
+Route::delete('article/{id}', [ArticleController::class, 'destroy']);
